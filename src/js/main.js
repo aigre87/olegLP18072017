@@ -38,6 +38,7 @@ function landMenu(){
 }
 
 $(document).ready(function(){
+	svg4everybody({});
 	initSlider();
 	landMenu();
 });
