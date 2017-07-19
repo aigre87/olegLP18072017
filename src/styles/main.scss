@@ -14,7 +14,7 @@ a{
 	content: '';
 }
 .mainWrapper{
-	padding: 0 0 100px;
+	padding: 64px 0 100px;
 	color: map-get($colors, text);
 	font-family: 'Roboto', sans-serif;
 	overflow: hidden;
@@ -29,7 +29,14 @@ a{
 }
 
 header { 
+	z-index: 1;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	min-width: 1080px;
 	font-family: 'Roboto', sans-serif;
+	background: rgba(255,255,255,0.8);
 	&:after{
 		content: '';
 		display: table;
