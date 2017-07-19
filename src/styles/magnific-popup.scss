@@ -1,3 +1,4 @@
+@import "other/mixins";
 /* Magnific Popup CSS */
 .mfp-bg {
   top: 0;
@@ -349,3 +350,111 @@ img.mfp-img {
   .mfp-container {
     padding-left: 6px;
     padding-right: 6px; } }
+
+
+
+
+.videoPopup {
+    position: relative;
+    background: #FFF;
+    padding: 40px 25px;
+    width: auto;
+    max-width: 700px;
+    margin: 0 auto;
+}
+.videoPopup .mfp-close, .writeReviewForm .mfp-close, .defaultPopup .mfp-close{
+  z-index: 2;
+  cursor: pointer;
+  font-size: 0;
+  $size: 20px;
+  height: $size;
+  width: $size;
+  position: relative;
+  box-sizing: border-box;
+  line-height: $size;
+  display: block;
+  position: absolute;
+  top: 9px;
+  right: 10px;
+  background: url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2221%22%20height%3D%2221%22%3E%3Cpath%20fill%3D%22%23FF5A5F%22%20d%3D%22M12.336%2010.985l8.377%208.377c.373.373.373.978%200%201.351s-.978.373-1.351%200l-8.377-8.377-8.377%208.377c-.373.373-.978.373-1.351%200s-.373-.978%200-1.351l8.377-8.377-8.377-8.377c-.373-.373-.373-.978%200-1.351s.978-.373%201.351%200l8.377%208.377%208.377-8.377c.373-.373.978-.373%201.351%200s.373.978%200%201.351l-8.377%208.377z%22/%3E%3C/svg%3E) center center;
+}
+
+/* 
+
+====== Zoom effect ======
+
+*/
+.mfp-zoom-in {
+  
+  /* start state */
+  .mfp-with-anim {
+    opacity: 0;
+    transition: all 0.2s ease-in-out; 
+    transform: scale(0.8); 
+  }
+  
+  &.mfp-bg {
+    opacity: 0;
+    transition: all 0.3s ease-out;
+  }
+  
+  /* animate in */
+  &.mfp-ready {
+    .mfp-with-anim {
+      opacity: 1;
+      transform: scale(1); 
+    }
+    &.mfp-bg {
+      opacity: 0.8;
+    }
+  }
+  
+  /* animate out */
+  &.mfp-removing {
+    
+    .mfp-with-anim {
+      transform: scale(0.8); 
+      opacity: 0;
+    }
+    &.mfp-bg {
+      opacity: 0;
+    }
+    
+  }
+  
+}
+
+
+.image-source-link {
+  color: #98C3D1;
+}
+
+.mfp-with-zoom .mfp-container,
+.mfp-with-zoom.mfp-bg {
+  opacity: 0;
+  -webkit-backface-visibility: hidden;
+  /* ideally, transition speed should match zoom duration */
+  -webkit-transition: all 0.3s ease-out; 
+  -moz-transition: all 0.3s ease-out; 
+  -o-transition: all 0.3s ease-out; 
+  transition: all 0.3s ease-out;
+}
+
+.mfp-with-zoom.mfp-ready .mfp-container {
+    opacity: 1;
+}
+.mfp-with-zoom.mfp-ready.mfp-bg {
+    opacity: 0.8;
+}
+
+.mfp-with-zoom.mfp-removing .mfp-container, 
+.mfp-with-zoom.mfp-removing.mfp-bg {
+  opacity: 0;
+}
+
+.defaultPopupContent{
+  width: 1000px;
+  background: #fff;
+  margin: 40px auto;
+  padding: 40px 35px 25px;
+}
