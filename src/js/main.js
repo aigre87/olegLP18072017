@@ -66,8 +66,6 @@ function landMenu(){
 		},100);
 	});
 
-
-	
 	$(".tabLinks .link").each(function(){
 			var tl;
 			$(this).on("click", function(){
