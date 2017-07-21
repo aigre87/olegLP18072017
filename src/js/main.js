@@ -23,7 +23,7 @@ function initSlider(){
 }
 
 function headerMenuPopup(){
-    var $items = $("#headerMenu .link");
+    var $items = $(".popupLink");
 
     $items.on("click", function(){
         var $this = $(this),
@@ -50,10 +50,71 @@ function headerMenuPopup(){
     });
 }
 
-function mainMenu(){
-	//$("#headerMenu .link")
+function rowsRightArrow(){
+	var imgH1d2 = $(".section3 .row .imgB").outerHeight() /2;
+	var h = $(".section3 .row:eq(1) .col:last .imgB").offset().top - $(".section3 .row:eq(0) .col:last .imgB").offset().top;
+	var t = $(".section3 .row:eq(0) .col:last .imgB").offset().top - $(".section3 .rows").offset().top + imgH1d2;
+	$(".section3 .rows").append("<div class='helper' style='top:"+t+"px; height:"+h+"px'>");
+
 }
+
 function landMenu(){
+	var hwaderH = parseInt($("header").outerHeight());
+	var landMenuH = parseInt($("#landMenu").outerHeight());
+  var controller = new ScrollMagic.Controller({
+      globalSceneOptions: {
+          triggerHook: 'onLeave',
+      }
+  });
+  var $navBlock = $("#landMenu");
+
+  new ScrollMagic.Scene({triggerElement: $navBlock, duration: $(window).height() - $("#landMenu").offset().top -100, offset: -hwaderH })
+  .setPin($navBlock, {pushFollowers: false})
+  //.addIndicators({name: "1"}) // add indicators (requires plugin)
+  .addTo(controller);
+
+  $("*[data-ar]").each(function(i){
+      var $thisAr = $(this),
+          thisArAttr = $thisAr.attr("data-ar"),
+          $thisLink = $("*[data-link='"+thisArAttr+"']"),
+          curDur = null,
+          offsetT;
+          console.log(thisArAttr);
+
+          if( $("*[data-ar]:eq("+(i+1)+")").length > 0 ){
+              curDur = $("*[data-ar]:eq("+(i+1)+")").offset().top - $thisAr.offset().top;
+          }
+
+          if( i==0 ){
+          	offsetT = -(hwaderH+landMenuH);
+          }else{
+          	offsetT = -(hwaderH+landMenuH)-80;
+          }
+          
+          
+          new ScrollMagic.Scene({triggerElement: $thisAr, duration: curDur, offset: offsetT })
+          .setClassToggle( $thisLink , "active") // add class toggle
+          .addIndicators() // add indicators (requires plugin)
+
+          .addTo(controller);
+  });
+
+
+  $("*[data-link]").on("click", function(e){
+      e.preventDefault();
+      var $link = $(this),
+          linkAttr = $link.attr("data-link"),
+          $ar = $("*[data-ar='"+linkAttr+"']");
+          
+      if ( $ar.length > 0 ){
+          var arSC = $ar.offset().top;
+          TweenLite.to(window, 0.5, { ease: Sine.easeInOut, scrollTo: arSC-(hwaderH+landMenuH)});
+      }
+  });
+}
+
+
+function tabs(){
 	$(".tabsBlock").each(function(){
 		var $content = $(".tabsContent");
 		TweenMax.set( $content, {  height: $content.find(".tab.selected").outerHeight() } );
@@ -104,7 +165,9 @@ function landMenu(){
 
 $(document).ready(function(){
 	svg4everybody({});
-	landMenu();
+	//tabs();
 	initSlider();
 	headerMenuPopup();
+	rowsRightArrow();
+	landMenu();
 });

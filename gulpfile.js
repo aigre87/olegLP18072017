@@ -80,10 +80,11 @@ gulp.task('libs:build', function() {
         'src/libsSrc/gsap/src/minified/TweenMax.min.js',
         'src/libsSrc/gsap/src/minified/plugins/ScrollToPlugin.min.js',
         'src/libsSrc/svg4everybody/dist/svg4everybody.min.js',
-        // 'src/libsSrc/scrollmagic/scrollmagic/minified/ScrollMagic.min.js',
-        // 'src/libsSrc/scrollmagic/scrollmagic/minified/plugins/jquery.ScrollMagic.min.js',
-        // 'src/libsSrc/scrollmagic/scrollmagic/minified/plugins/animation.gsap.min.js',
-        'src/libsSrc/owl.carousel/dist/owl.carousel.min.js'
+        'src/libsSrc/scrollmagic/scrollmagic/minified/ScrollMagic.min.js',
+        'src/libsSrc/scrollmagic/scrollmagic/minified/plugins/jquery.ScrollMagic.min.js',
+        'src/libsSrc/scrollmagic/scrollmagic/minified/plugins/animation.gsap.min.js',
+        'src/libsSrc/scrollmagic/scrollmagic/minified/plugins/debug.addIndicators.min.js'
+        //'src/libsSrc/owl.carousel/dist/owl.carousel.min.js'
         ])
         .pipe(plumber())
         .pipe(concat('libs.min.js')) // Собираем их в кучу в новом файле libs.min.js
@@ -159,9 +160,9 @@ gulp.task('svgSprite:build', function () {
         // remove all fill, style and stroke declarations in out shapes
         .pipe(cheerio({
             run: function ($) {
-                $('[fill]').removeAttr('fill');
-                $('[stroke]').removeAttr('stroke');
-                $('[style]').removeAttr('style');
+                // $('[fill]').removeAttr('fill');
+                // $('[stroke]').removeAttr('stroke');
+                // $('[style]').removeAttr('style');
             },
             parserOptions: {xmlMode: true}
         }))
