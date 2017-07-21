@@ -81,8 +81,11 @@ function landMenu(){
           offsetT;
           console.log(thisArAttr);
 
-          if( $("*[data-ar]:eq("+(i+1)+")").length > 0 ){
+
+          if( $("*[data-ar]:eq("+(i+1)+")").length > 0 && i != 0 ){
               curDur = $("*[data-ar]:eq("+(i+1)+")").offset().top - $thisAr.offset().top;
+          }else if ( $("*[data-ar]:eq("+(i+1)+")").length > 0 && i == 0 ){
+          		curDur = $("*[data-ar]:eq("+(i+1)+")").offset().top - $thisAr.offset().top-80;
           }
 
           if( i==0 ){
