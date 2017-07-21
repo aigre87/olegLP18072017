@@ -79,7 +79,6 @@ function landMenu(){
           $thisLink = $("*[data-link='"+thisArAttr+"']"),
           curDur = null,
           offsetT;
-          console.log(thisArAttr);
 
 
           if( $("*[data-ar]:eq("+(i+1)+")").length > 0 && i != 0 ){
