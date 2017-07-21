@@ -179,13 +179,19 @@ header {
 	    display: block;
 	    width: 200px;
 	    margin-bottom: 10px;
+			font-size: 14px;
 		}
 		textarea{
 			border: 1px solid #aaa;
 			background-color: #fff;
+			font-size: 14px;
+			line-height: 26px;
+			padding: 8px 10px;
 			width: 500px;
 			min-height: 50px;
 			resize: vertical;
+			font-size: 14px;
+			line-height: 16px;
 		}
 		input[type='submit']{
 			margin-top: 20px;
@@ -296,7 +302,7 @@ header {
 	}
 }
 .section3{
-	margin: 50px 0;
+	padding: 25px 0;
 	text-align: center;
 	.title{
 		font-size: 30px;
@@ -426,7 +432,7 @@ header {
 	}
 }
 .section4{
-	margin: 50px 0;
+	padding: 25px 0;
 	.title{
 		font-size: 30px;
 		line-height: 32px;
