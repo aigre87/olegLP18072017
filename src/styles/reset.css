@@ -17,9 +17,7 @@ a {text-decoration: none;cursor: pointer;}
 a:hover {text-decoration: underline;}
 
 html * {max-height:1000000px;}
-a:-webkit-any-link{
-    text-decoration:none !important;
-}
+
 button, input[type='submit'], select{
 	-moz-appearance: none; 
 	-webkit-appearance: none; 

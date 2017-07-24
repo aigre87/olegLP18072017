@@ -5,10 +5,11 @@ div{
 	box-sizing: border-box;
 }
 a{
-
+	color: map-get($colors, green);
 	transition: color 0.15s ease;
+	text-decoration: none;
 	&:hover{
-		color: map-get($colors, pink);
+		text-decoration: underline;
 	}
 }
 
@@ -27,10 +28,15 @@ a{
 .layout{
 	width: 1080px;
 	margin: 0 auto;
-	padding-bottom: 100px;
 }
 .section{
-	
+	padding: 50px 0;
+	.title{
+    font-size: 30px;
+    line-height: 32px;
+    margin-bottom: 20px;
+    text-align: center;
+	}
 }
 
 header { 
@@ -95,7 +101,9 @@ header {
 
 
 .section1 { 
+	padding-bottom: 20px;
 	.companyName { 
+		padding-left: 20px;
 		font-family: 'Noto Sans', sans-serif;
     font-size: 48px;
     line-height: 56px;
@@ -107,33 +115,37 @@ header {
 	}
 
 	.companyPhrase { 
+		padding-left: 20px;
     font-size: 48px;
     line-height: 56px;
     letter-spacing: -0.8px;
     padding-top: 8px;
-    padding-bottom: 8px;
     color: #484848;
     font-weight: 300;
     width: 600px;
 	}
 	.contacts{
-		margin: 40px 0 20px;
+		padding-left: 20px;
+		margin: 30px 0 30px;
+		display: table;
+		width: 100%;
 		.text{
-			margin-bottom: 15px;
-			.item{
-				margin-right: 20px;
-				font-size: 16px;
-				line-height: 20px;
-				display: block;
-				span{
-					font-size: 18px;
-					line-height: 20px;
-					font-weight: bold;
+			display: table-cell;
+			vertical-align: middle;
+			text-align: left;
+			font-size: 16px;
+			line-height: 20px;
+			a{
+				margin-left: 15px;
+				&:first-child{
+					margin-left: 0;
 				}
 			}
 		}
 		.social{
-			display: inline-block;
+			display: table-cell;
+			vertical-align: middle;
+			text-align: right;
 			font-size: 0;
 			line-height: 40px;
 			a{
@@ -163,51 +175,113 @@ header {
 	}
 
 	form{
-		background: #EFEFEF;
-		padding: 20px 40px;
+		width: 100%;
+		box-sizing: border-box;
+		border: 1px solid #DBDBDB;
+		padding: 0 20px 16px;
 		border-radius: 4px;
 		display: inline-block;
+		font-size: 0;
 		.inpts{
 			overflow: hidden;
 		}
+		.col{
+			padding-top: 16px;
+			display: inline-block;
+			vertical-align: top;
+			margin-left: 15px;
+			box-sizing: border-box;
+			width: calc(33.3333333% - 10px);
+			box-sizing: border-box;
+			position: relative;
+			&:before{
+				content: '';
+				height: 100%;
+				width: 1px;
+				background: #DBDBDB;
+				left: -7px;
+    		top: 0;
+    		position: absolute;
+			}
+			&:first-child{
+				margin-left: 0;
+				&:before{
+					display: none;
+				}
+			}
+			.name{
+				font-size: 15px;
+				line-height: 18px;
+				margin-bottom: 10px;
+			}
+		}
 		input[type='text'],input[type='tel'],input[type='email']{
-	    border: 1px solid #aaa;
-	    border-radius: 2px;
 	    background-color: #fff;
 	    color: #484848;
-	    padding: 8px 10px;
-	    display: block;
-	    width: 200px;
+	    display: inline-block;
 	    margin-bottom: 10px;
 			font-size: 14px;
-		}
-		textarea{
-			border: 1px solid #aaa;
-			background-color: #fff;
-			font-size: 14px;
-			line-height: 26px;
+			width: 100%;
 			padding: 8px 10px;
-			width: 500px;
-			min-height: 50px;
-			resize: vertical;
-			font-size: 14px;
-			line-height: 16px;
+			box-sizing: border-box;
+			font-size: 19px;
+			line-height: 24px;
+			border: none;
 		}
-		input[type='submit']{
-			margin-top: 20px;
-			background: map-get($colors, pink);
-			border-radius: 4px;
-			color: #fff;
-	    user-select: none;
-	    display: inline-block;
-      padding: 9px 27px;
-      font-weight: bold;
-      font-size: 16px;
-      border: none;
-      cursor: pointer;
-      &:hover{
-      	background: lighten( map-get($colors, pink), 7 );
-      }
+		.b{
+	    padding-top: 16px;
+			display: table;
+			width: 100%;
+			position: relative;
+			&:before{
+				content: '';
+				background: #DBDBDB;
+				height: 1px;
+				width: calc(100% + 40px);
+				box-sizing: border-box;
+				position: absolute;
+				left: -20px;
+				top: 0;
+			}
+			.lc{
+				display: table-cell;
+				vertical-align: top;
+				width: 100%;
+				textarea{
+					border: none;
+					background-color: #fff;
+					font-size: 14px;
+					line-height: 26px;
+					padding: 8px 10px;
+					width: 500px;
+					min-height: 60px;
+					resize: vertical;
+					font-size: 14px;
+					line-height: 16px;
+					box-sizing: border-box;
+					width: 100%;
+				}
+			}
+			.rc{
+				padding-left: 30px;
+				display: table-cell;
+				vertical-align: middle;
+				input[type='submit']{
+					background: map-get($colors, pink);
+					border-radius: 4px;
+					color: #fff;
+			    user-select: none;
+			    display: inline-block;
+		      padding: 10px 29px;
+		      font-weight: bold;
+		      font-size: 18px;
+		      border: none;
+		      cursor: pointer;
+		      &:hover{
+		      	background: lighten( map-get($colors, pink), 7 );
+		      }
+				}
+			}
 		}
 	}
 
@@ -221,7 +295,7 @@ header {
     margin-top: 32px;
     border-bottom: 1px solid #e4e4e4;
     background: rgba(255,255,255,0.8);
-		.link { 
+		.link, .footerLinkAnchor { 
 			font-size: 12px;
 	    line-height: 16px;
 	    letter-spacing: 0.4px;
@@ -302,17 +376,12 @@ header {
 	}
 }
 .section3{
-	padding: 25px 0;
 	text-align: center;
-	.title{
-		font-size: 30px;
-		line-height: 32px;
-		margin-bottom: 20px;
-		text-align: center;
-	}
 	.rows{
 		position: relative;
 		overflow: hidden;
+    margin: 0 auto;
+    width: 90%;
 	}
 	.helper{
 		position: absolute;
@@ -345,16 +414,12 @@ header {
 			.col{
 				width: 25%;
 				.imgB{
-					&:before{
-						content: '';
-						background: url(data:image/svg+xml,%3Csvg%20%0A%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%0A%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%0A%20width%3D%2216.5px%22%20height%3D%2229.5px%22%3E%0A%3Cdefs%3E%0A%3Cfilter%20id%3D%22Filter_0%22%3E%0A%20%20%20%20%3CfeFlood%20flood-color%3D%22rgb%280%2C%20132%2C%20137%29%22%20flood-opacity%3D%221%22%20result%3D%22floodOut%22%20/%3E%0A%20%20%20%20%3CfeComposite%20operator%3D%22atop%22%20in%3D%22floodOut%22%20in2%3D%22SourceGraphic%22%20result%3D%22compOut%22%20/%3E%0A%20%20%20%20%3CfeBlend%20mode%3D%22normal%22%20in%3D%22compOut%22%20in2%3D%22SourceGraphic%22%20/%3E%0A%3C/filter%3E%0A%0A%3C/defs%3E%0A%3Cg%20filter%3D%22url%28%23Filter_0%29%22%3E%0A%3Cpath%20fill-rule%3D%22evenodd%22%20%20stroke%3D%22rgb%28255%2C%20255%2C%20255%29%22%20stroke-width%3D%221px%22%20stroke-linecap%3D%22butt%22%20stroke-linejoin%3D%22miter%22%20fill%3D%22none%22%0A%20d%3D%22M14.500%2C28.497%20L0.500%2C14.497%20L14.500%2C0.496%20%22/%3E%0A%3C/g%3E%0A%3Cpath%20fill%3D%22none%22%20stroke%3D%22rgb%28255%2C%20255%2C%20255%29%22%20stroke-width%3D%221px%22%20stroke-linecap%3D%22butt%22%20stroke-linejoin%3D%22miter%22%0A%20d%3D%22M14.500%2C28.497%20L0.500%2C14.497%20L14.500%2C0.496%20%22/%3E%0A%3C/svg%3E);
-					}
 					&:after{
 						position: absolute;
-						left: -4px;
+						left: -2px;
 						top: 50%;
-						width: 20px;
-						height: 20px;
+						width: 10px;
+						height: 10px;
 						border-top: 1px solid map-get($colors, green);
 						border-left: 1px solid map-get($colors, green);
 						display: block;
@@ -401,10 +466,10 @@ header {
 			position: relative;
 			&:after{
 				position: absolute;
-				right: -4px;
+				right: -2px;
 				top: 50%;
-				width: 20px;
-				height: 20px;
+				width: 10px;
+				height: 10px;
 				border-top: 1px solid map-get($colors, green);
 				border-left: 1px solid map-get($colors, green);
 				display: block;
@@ -432,12 +497,8 @@ header {
 	}
 }
 .section4{
-	padding: 25px 0;
 	.title{
-		font-size: 30px;
-		line-height: 32px;
-		margin-bottom: 20px;
-		text-align: center;
+		margin-bottom: 40px;
 	}
 	.row{
 		margin-left: -15px;
@@ -470,17 +531,13 @@ header {
 }
 
 .section5{
-	.title{
-		font-size: 40px;
-		line-height: 44px;
-		font-weight: 700;
-	}
 	.items{
 		.item{
 			display: table;
 			width: 100%;
+			padding-bottom: 20px;
 			.imageB{
-				padding: 20px 50px;
+				padding: 0px 50px;
 				position: relative;
 				display: table-cell;
 				vertical-align: middle;
@@ -513,15 +570,26 @@ header {
 }
 
 .mainWrapper footer{
-	padding: 0 20px;
+	border-top: 1px solid #e4e4e4;
+	padding: 15px 10px 0;
 	box-sizing: border-box;
 	display: table;
 	width: 100%;
+	margin-top: 70px;
 	.copyB{
 		display: table-cell;
-		vertical-align: middle;
+		vertical-align: top;
 		line-height: 40px;
 		height: 40px;
+		.links{
+			margin-left: 20px;
+			a{
+				margin-left: 10px;
+				&:first-child{
+					margin-left: 0;
+				}
+			}
+		}
 	}
 	.rb{
 		display: table-cell;
@@ -569,6 +637,44 @@ header {
 	}
 }
 
+.footerTable{
+	width: 100%;
+	font-size: 16px;
+	line-height: 20px;
+	th{
+		font-weight: bold;
+		text-align: center;
+		padding: 10px 15px;
+		border: 1px solid #DBDBDB;
+	}
+	td{
+		padding: 10px 15px;
+		width: 50%;
+		border: 1px solid #DBDBDB;
+		ul{
+			li{
+				position: relative;
+				list-style-type: none;
+				margin-top: 10px;
+				padding-left: 25px;
+				&:first-child{
+					margin-top: 0;
+				}
+				&:before{
+			    content: '';
+			    display: block;
+			    width: 3px;
+			    height: 3px;
+			    border-radius: 100%;
+			    background-color: map-get($colors, text);
+			    left: 7px;
+			    top: 8px;
+			    position: absolute;
+			  }
+			}
+		}
+	}
+}
 
 
 

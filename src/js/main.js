@@ -113,6 +113,9 @@ function landMenu(){
           TweenLite.to(window, 0.5, { ease: Sine.easeInOut, scrollTo: arSC-(hwaderH+landMenuH)});
       }
   });
+  $(".footerLinkAnchor").on("click", function(){
+  	TweenLite.to(window, 0.5, { ease: Sine.easeInOut, scrollTo: $("body").outerHeight()});
+  });
 }
 
 
