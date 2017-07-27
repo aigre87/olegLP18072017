@@ -55,7 +55,10 @@ function rowsRightArrow(){
 	var h = $(".section3 .row:eq(1) .col:last .imgB").offset().top - $(".section3 .row:eq(0) .col:last .imgB").offset().top;
 	var t = $(".section3 .row:eq(0) .col:last .imgB").offset().top - $(".section3 .rows").offset().top + imgH1d2;
 	$(".section3 .rows").append("<div class='helper' style='top:"+t+"px; height:"+h+"px'>");
-
+	$(window).on("load", function(){
+		alert(1);
+		$(".section3 .helper").css({top: t+"px", height: h+"px"});
+	});
 }
 
 function landMenu(){
