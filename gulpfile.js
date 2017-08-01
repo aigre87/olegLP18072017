@@ -80,6 +80,7 @@ gulp.task('libs:build', function() {
         'src/libsSrc/gsap/src/minified/TweenMax.min.js',
         'src/libsSrc/gsap/src/minified/plugins/ScrollToPlugin.min.js',
         'src/libsSrc/svg4everybody/dist/svg4everybody.min.js',
+        'src/libsSrc/jquery.scrollbar/jquery.scrollbar.js',
         'src/libsSrc/scrollmagic/scrollmagic/minified/ScrollMagic.min.js',
         'src/libsSrc/scrollmagic/scrollmagic/minified/plugins/jquery.ScrollMagic.min.js',
         'src/libsSrc/scrollmagic/scrollmagic/minified/plugins/animation.gsap.min.js',

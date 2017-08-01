@@ -22,31 +22,63 @@ function initSlider(){
 	});
 }
 
-function headerMenuPopup(){
+function defaultPopup(){
     var $items = $(".popupLink");
+    var $rightPop = $("#rightPopup");
+    var $rightPopCon = $("#rightPopup .content");
+    var $rightPopClose = $("#rightPopup .closeBut");
+  	$("#rightPopup .content").scrollbar({
+  		disableBodyScroll : true,
+  	});
 
+  	$rightPopClose.on("click", function(){
+  		$(".popupLink.rightPopup").add($rightPop).removeClass("active");
+  		TweenLite.to( $rightPop, 0.3, { x:"100%", onComplete:function(){
+  				$rightPopCon.html("");
+  			} 
+  		});
+  	});
     $items.on("click", function(){
         var $this = $(this),
-            $thisDetail = $this.find(".popup");
-        $this.addClass("active");
-        $.magnificPopup.open({
-            items: {
-                src: "<div class='defaultPopupContent mfp-with-anim'>"+$thisDetail[0].outerHTML+"</div>",
-                type: 'inline'
-            },
-            removalDelay: 500, //delay removal by X to allow out-animation
-            closeBtnInside: true,
-            mainClass: 'mfp-with-zoom',
-            callbacks: {
-                beforeOpen: function() {
-                    this.st.mainClass = "mfp-zoom-in defaultPopup salesPopup";
-                },
-                beforeClose: function() {
-                    $this.removeClass("active");
-                },
-            },
-            midClick: true // allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source.
-        });
+            $thisDetail = $this.find(".popup"),
+            rightPopup = $this.hasClass("rightPopup") ? true : false;
+
+        if( rightPopup ){
+        	if( $this.hasClass("active") ){ return false; }
+
+        	if( $rightPop.hasClass("active") ){
+        		$rightPopCon.html("");
+	      		$rightPopCon.append($thisDetail.html());
+        	}else{
+        		$(".popupLink.rightPopup").removeClass("active");
+        		$this.add($rightPop).addClass("active");
+						$rightPopCon.html("");
+	      		$rightPopCon.append($thisDetail.html());
+	      		TweenLite.to( $rightPop, 0.3, { x:"0%" });
+        	}
+        }else{
+	        $this.addClass("active");
+	        $.magnificPopup.open({
+	            items: {
+	                src: "<div class='defaultPopupContent mfp-with-anim'>"+$thisDetail[0].outerHTML+"</div>",
+	                type: 'inline'
+	            },
+	            removalDelay: 500, //delay removal by X to allow out-animation
+	            closeBtnInside: true,
+	            mainClass: 'mfp-with-zoom',
+	            callbacks: {
+	                beforeOpen: function() {
+	                    this.st.mainClass = "mfp-zoom-in defaultPopup salesPopup";
+	                },
+	                beforeClose: function() {
+	                    $this.removeClass("active");
+	                },
+	            },
+	            midClick: true // allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source.
+	        });
+        }
+
+
     });
 }
 
@@ -56,11 +88,10 @@ function rowsRightArrow(){
 	var t = $(".section3 .row:eq(0) .col:last .imgB").offset().top - $(".section3 .rows").offset().top + imgH1d2;
 	$(".section3 .rows").append("<div class='helper' style='top:"+t+"px; height:"+h+"px'>");
 	$(window).on("load", function(){
-		alert(1);
 		$(".section3 .helper").css({top: t+"px", height: h+"px"});
 	});
 }
-
+var landMenuScene;
 function landMenu(){
 	var hwaderH = parseInt($("header").outerHeight());
 	var landMenuH = parseInt($("#landMenu").outerHeight());
@@ -70,8 +101,7 @@ function landMenu(){
       }
   });
   var $navBlock = $("#landMenu");
-
-  new ScrollMagic.Scene({triggerElement: $navBlock, duration: $(window).height() - $("#landMenu").offset().top -100, offset: -hwaderH })
+  landMenuScene = new ScrollMagic.Scene({triggerElement: $navBlock, duration: $("body").outerHeight() - $(".landMenuWrapper").offset().top -100, offset: -hwaderH })
   .setPin($navBlock, {pushFollowers: false})
   //.addIndicators({name: "1"}) // add indicators (requires plugin)
   .addTo(controller);
@@ -99,7 +129,7 @@ function landMenu(){
           
           new ScrollMagic.Scene({triggerElement: $thisAr, duration: curDur, offset: offsetT })
           .setClassToggle( $thisLink , "active") // add class toggle
-          .addIndicators() // add indicators (requires plugin)
+          //.addIndicators() // add indicators (requires plugin)
 
           .addTo(controller);
   });
@@ -175,7 +205,10 @@ $(document).ready(function(){
 	svg4everybody({});
 	//tabs();
 	initSlider();
-	headerMenuPopup();
+	defaultPopup();
 	rowsRightArrow();
 	landMenu();
+	$(window).on("load", function(){
+		landMenuScene.duration($("body").outerHeight() - $(".landMenuWrapper").offset().top -100);
+	});
 });

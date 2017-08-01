@@ -26,6 +26,7 @@
     "jquery.inputmask: ^3.3.4" 
   ],
   "devDependencies": {
+    "jquery.scrollbar": "^0.2.11" ,
     "jquery": "^3.2.1",
     "gsap": "^1.19.0",
     "svg4everybody": "^2.1.4",
