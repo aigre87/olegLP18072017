@@ -233,9 +233,15 @@ header {
     line-height: 56px;
     letter-spacing: -0.8px;
     padding-top: 8px;
-    padding-bottom: 8px;
+    padding-bottom: 0px;
     color: map-get($colors, pink);
     font-weight: 700;
+	}
+	.companyDesc{
+		padding-left: 22px;
+		font-size: 16px;
+		line-height: 20px;
+		padding-bottom: 8px;
 	}
 
 	.companyPhrase { 
@@ -418,7 +424,6 @@ form.mainForm{
 		z-index: 10;
     margin-top: 32px;
     border-bottom: 1px solid #e4e4e4;
-    background: rgba(255,255,255,0.8);
 		.link, .footerLinkAnchor { 
 			font-size: 12px;
 	    line-height: 16px;
@@ -516,123 +521,62 @@ form.mainForm{
 }
 .section3{
 	text-align: center;
-	.rows{
-		position: relative;
-		overflow: hidden;
-    margin: 0 auto;
-    width: 90%;
-	}
-	.helper{
-		position: absolute;
-		right: 0;
-		display: block;
-		width: 1px;
-		background: map-get($colors, green);
-	}
 	.row{
-		font-size: 0;
-		display: inline-block;
-		margin: 0 auto;
-		margin-left: -15px;
-		margin-right: -15px;
 		position: relative;
-		width: 80%;
-		&:before{
-			height: 1px;
-			//width: calc(66.6666666%);
-			width: 2000px;
-			left: calc(16.6666666666%);
-			background: map-get($colors, green);
-			top: 100px;
-			content: '';
+    margin: 0 auto;
+    display: table;
+    margin: 0 auto 50px;
+    border-spacing: 20px 0px;
+    &:last-child{
+    	margin-bottom: 0;
+    }
+	}
+	.item{
+		border: 1px solid map-get($colors, green);
+		padding: 8px 20px;
+		position: relative;
+		width: 300px;
+		display: table-cell;
+		border-radius: 10px;
+	}
+	.la, .ca, .ra{
+		position: absolute;
+		top: calc( 100% + 5px );
+		left: 50%;
+		width: 1px;
+		height: 40px;
+		background: map-get($colors, green);
+		transform-origin: 50% 50%;
+		&:after{
 			position: absolute;
-			top: 25px;
-		}
-		&.w100{
-			width: 100%;
-			.col{
-				width: 25%;
-				.imgB{
-					&:after{
-						position: absolute;
-						left: -2px;
-						top: 50%;
-						width: 10px;
-						height: 10px;
-						border-top: 1px solid map-get($colors, green);
-						border-left: 1px solid map-get($colors, green);
-						display: block;
-						transform-origin: 50% 50%;
-						transform: translateX(-100%) translateY(-50%) rotate(135deg);
-						content: '';
-						// background-image: url(data:image/svg+xml,%3Csvg%20%0A%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%0A%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%0A%20width%3D%2216.5px%22%20height%3D%2229.5px%22%3E%0A%3Cdefs%3E%0A%0A%0A%3C/defs%3E%0A%3Cg%20filter%3D%22url%28%23Filter_0%29%22%3E%0A%3Cpath%20fill-rule%3D%22evenodd%22%20%20stroke%3D%22%23008489%22%20stroke-width%3D%221px%22%20stroke-linecap%3D%22butt%22%20stroke-linejoin%3D%22miter%22%20fill%3D%22none%22%0A%20d%3D%22M14.500%2C28.497%20L0.500%2C14.497%20L14.500%2C0.496%20%22/%3E%0A%3C/g%3E%0A%3Cpath%20fill%3D%22none%22%20stroke%3D%22%23008489%22%20stroke-width%3D%221px%22%20stroke-linecap%3D%22butt%22%20stroke-linejoin%3D%22miter%22%0A%20d%3D%22M14.500%2C28.497%20L0.500%2C14.497%20L14.500%2C0.496%20%22/%3E%0A%3C/svg%3E);
-						background-repeat: no-repeat;
-						background-position: center left;
-					}
-				}
-				&:first-child{
-					.imgB:after{
-						display: none;
-					}
-				}
-			}
-			&:before{
-				height: 1px;
-				//width: calc(75%);
-				width: 2000px;
-				left: calc(12.5%);
-				background: map-get($colors, green);
-				top: 100px;
-				content: '';
-				position: absolute;
-				top: 25px;
-			}
+			right: 0px;
+			top: 100%;
+			width: 10px;
+			height: 10px;
+			border-top: 1px solid map-get($colors, green);
+			border-left: 1px solid map-get($colors, green);
+			display: block;
+			-webkit-transform-origin: 50% 50%;
+			-ms-transform-origin: 50% 50%;
+			transform-origin: 50% 50%;
+			-webkit-transform: translateX(100%) translateY(-50%) rotate(-45deg);
+			-ms-transform: translateX(100%) translateY(-50%) rotate(-45deg);
+			transform: translateX(46%) translateY(-100%) rotate(225deg);
+			content: '';
+			background-repeat: no-repeat;
+			background-position: center left;
 		}
 	}
-
-	.col{
-		position: relative;
-		display: inline-block;
-		vertical-align: top;
-		width: 33.33333%;
-		box-sizing: border-box;
-		padding: 0 15px;
-		.imgB{
-			width: 50px;
-			height: 50px;
-			border-radius: 100%;
-			margin: 0 auto;
-			position: relative;
-			&:after{
-				position: absolute;
-				right: -2px;
-				top: 50%;
-				width: 10px;
-				height: 10px;
-				border-top: 1px solid map-get($colors, green);
-				border-left: 1px solid map-get($colors, green);
-				display: block;
-				transform-origin: 50% 50%;
-				transform: translateX(100%) translateY(-50%) rotate(-45deg);
-				content: '';
-				// background-image: url(data:image/svg+xml,%3Csvg%20%0A%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%0A%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%0A%20width%3D%2216.5px%22%20height%3D%2229.5px%22%3E%0A%3Cdefs%3E%0A%0A%0A%3C/defs%3E%0A%3Cg%20filter%3D%22url%28%23Filter_0%29%22%3E%0A%3Cpath%20fill-rule%3D%22evenodd%22%20%20stroke%3D%22%23008489%22%20stroke-width%3D%221px%22%20stroke-linecap%3D%22butt%22%20stroke-linejoin%3D%22miter%22%20fill%3D%22none%22%0A%20d%3D%22M14.500%2C28.497%20L0.500%2C14.497%20L14.500%2C0.496%20%22/%3E%0A%3C/g%3E%0A%3Cpath%20fill%3D%22none%22%20stroke%3D%22%23008489%22%20stroke-width%3D%221px%22%20stroke-linecap%3D%22butt%22%20stroke-linejoin%3D%22miter%22%0A%20d%3D%22M14.500%2C28.497%20L0.500%2C14.497%20L14.500%2C0.496%20%22/%3E%0A%3C/svg%3E);
-				background-repeat: no-repeat;
-				background-position: center left;
-			}
-			img{
-				max-width: 100%;
-				display: block;
-				margin: 0 auto;
-				border-radius: 100%;
-			}
-		}
-		.text{
-			text-align: center;
-			margin-top: 10px;
-			font-size: 18px;
-			line-height: 22px;
-			font-weight: 300;
-		}
+	.ca{
+		
+	}
+	.la{
+		margin-left: -20px;
+		transform: rotate(45deg);
+	}
+	.ra{
+		margin-left: 20px;
+		transform: rotate(-45deg);
 	}
 }
 .section4{
@@ -720,6 +664,16 @@ form.mainForm{
 		vertical-align: top;
 		line-height: 40px;
 		height: 40px;
+		img{
+			display: inline-block;
+			vertical-align: middle;
+			width: 25px;
+			margin-right: 5px;
+		}
+		.text{
+			display: inline-block;
+			vertical-align: middle;
+		}
 		.links{
 			margin-left: 20px;
 			a{

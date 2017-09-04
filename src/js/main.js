@@ -47,6 +47,8 @@ function defaultPopup(){
         	if( $this.hasClass("active") ){ return false; }
 
         	if( $rightPop.hasClass("active") ){
+        		$(".popupLink.rightPopup").removeClass("active");
+        		$this.add($rightPop).addClass("active");
         		$rightPopCon.html("");
 	      		$rightPopCon.append($thisDetail.html());
         	}else{
@@ -82,19 +84,10 @@ function defaultPopup(){
     });
 }
 
-function rowsRightArrow(){
-	var imgH1d2 = $(".section3 .row .imgB").outerHeight() /2;
-	var h = $(".section3 .row:eq(1) .col:last .imgB").offset().top - $(".section3 .row:eq(0) .col:last .imgB").offset().top;
-	var t = $(".section3 .row:eq(0) .col:last .imgB").offset().top - $(".section3 .rows").offset().top + imgH1d2;
-	$(".section3 .rows").append("<div class='helper' style='top:"+t+"px; height:"+h+"px'>");
-	$(window).on("load", function(){
-		$(".section3 .helper").css({top: t+"px", height: h+"px"});
-	});
-}
 var landMenuScene;
 function landMenu(){
-	var hwaderH = parseInt($("header").outerHeight());
 	var landMenuH = parseInt($("#landMenu").outerHeight());
+	var hwaderH = parseInt($("header").outerHeight()) - landMenuH;
   var controller = new ScrollMagic.Controller({
       globalSceneOptions: {
           triggerHook: 'onLeave',
@@ -206,7 +199,6 @@ $(document).ready(function(){
 	//tabs();
 	initSlider();
 	defaultPopup();
-	rowsRightArrow();
 	landMenu();
 	$(window).on("load", function(){
 		landMenuScene.duration($("body").outerHeight() - $(".landMenuWrapper").offset().top -100);
