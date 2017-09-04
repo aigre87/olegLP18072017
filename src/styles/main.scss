@@ -424,6 +424,9 @@ form.mainForm{
 		z-index: 10;
     margin-top: 32px;
     border-bottom: 1px solid #e4e4e4;
+    &.fixed{
+    	border-bottom: 1px solid transparent;
+    }
 		.link, .footerLinkAnchor { 
 			font-size: 12px;
 	    line-height: 16px;

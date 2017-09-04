@@ -87,7 +87,7 @@ function defaultPopup(){
 var landMenuScene;
 function landMenu(){
 	var landMenuH = parseInt($("#landMenu").outerHeight());
-	var hwaderH = parseInt($("header").outerHeight()) - landMenuH;
+	var hwaderH = parseInt($("header").outerHeight()) - landMenuH+1;
   var controller = new ScrollMagic.Controller({
       globalSceneOptions: {
           triggerHook: 'onLeave',
@@ -95,6 +95,7 @@ function landMenu(){
   });
   var $navBlock = $("#landMenu");
   landMenuScene = new ScrollMagic.Scene({triggerElement: $navBlock, duration: $("body").outerHeight() - $(".landMenuWrapper").offset().top -100, offset: -hwaderH })
+  .setClassToggle("#landMenu", "fixed")
   .setPin($navBlock, {pushFollowers: false})
   //.addIndicators({name: "1"}) // add indicators (requires plugin)
   .addTo(controller);
